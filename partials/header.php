@@ -10,4 +10,4 @@
     <title>CRUD APP with PHP</title>
 </head>
 
-<body class="p-1">
+<body class="">

@@ -14,27 +14,29 @@ if (!$user) {
 }
 ?>
 
-<table class="table">
-    <tr>
-        <th>Name</th>
-        <td><?php echo $user['id']; ?></td>
-    </tr>
-    <tr>
-        <th>Username</th>
-        <td><?php echo $user['username']; ?></td>
-    </tr>
-    <tr>
-        <th>Email</th>
-        <td><?php echo $user['email']; ?></td>
-    </tr>
-    <tr>
-        <th>Phone</th>
-        <td><?php echo $user['phone']; ?></td>
-    </tr>
-    <tr>
-        <th>Website</th>
-        <td><?php echo $user['website']; ?></td>
-    </tr>
-</table>
+<div class="container">
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <td><?php echo $user['id']; ?></td>
+        </tr>
+        <tr>
+            <th>Username</th>
+            <td><?php echo $user['username']; ?></td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td><?php echo $user['email']; ?></td>
+        </tr>
+        <tr>
+            <th>Phone</th>
+            <td><?php echo $user['phone']; ?></td>
+        </tr>
+        <tr>
+            <th>Website</th>
+            <td><a href="http://www.<?php echo $user['website']; ?>" target="_blank"><?php echo $user['website']; ?></a></td>
+        </tr>
+    </table>
+</div>
 
 <?php include "partials/footer.php"; ?>
