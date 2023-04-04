@@ -13,12 +13,29 @@ if (!$user) {
     exit;
 }
 
+if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    if (isset($_FILES['picture'])) {
+        if (!is_dir(__DIR__ . "/images")) {
+            mkdir(__DIR__ . "/images");
+        }
+        //get file extension
+        $fileType = explode("/", $_FILES['picture']['type']);
+        $extension = $fileType[1];
+        move_uploaded_file($_FILES['picture']['tmp_name'], __DIR__ . "/images/$userId.$extension");
+        update_user($_POST, $userId);
+    }
+
+    header("Location: index.php");
+    // echo "<pre>";
+    // var_dump($fileType);
+    // echo "</pre>";
+}
 ?>
 
 <div class="container">
     <div class="card">
         <div class="card-header">
-            <h3>Update user <b><?php echo $user['name'] ?></b></h3>
+            <h3>Update user :<b><?php echo $user['name'] ?></b></h3>
         </div>
         <div class="card-body">
 
