@@ -17,18 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $user = update_user($_POST, $userId);
 
     if (!empty($_FILES["picture"]["name"])) {
-        if (!is_dir(__DIR__ . "/images")) {
-            mkdir(__DIR__ . "/images");
-        }
-        //get file extension
-        $extension = explode("/", $_FILES['picture']['type'])[1];
-        move_uploaded_file($_FILES['picture']['tmp_name'], __DIR__ . "/images/$userId.$extension");
-        $user["extension"] = $extension;
-        update_user($user, $userId);
+        uploadImage($_FILES, $user);
     }
 
 
-    header("Location: index.php");
+    // header("Location: index.php");
 }
 ?>
 
