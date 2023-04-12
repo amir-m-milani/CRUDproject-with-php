@@ -16,7 +16,7 @@ if (!$user) {
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $user = update_user($_POST, $userId);
 
-    if (isset($_FILES['picture'])) {
+    if (!empty($_FILES["picture"]["name"])) {
         if (!is_dir(__DIR__ . "/images")) {
             mkdir(__DIR__ . "/images");
         }
@@ -28,9 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     }
 
 
-    // echo "<pre>";
-    // var_dump($user);
-    // echo "</pre>";
     header("Location: index.php");
 }
 ?>
