@@ -14,6 +14,8 @@ if (!$user) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    $user = update_user($_POST, $userId);
+
     if (isset($_FILES['picture'])) {
         if (!is_dir(__DIR__ . "/images")) {
             mkdir(__DIR__ . "/images");
@@ -21,9 +23,14 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         //get file extension
         $extension = explode("/", $_FILES['picture']['type'])[1];
         move_uploaded_file($_FILES['picture']['tmp_name'], __DIR__ . "/images/$userId.$extension");
-        update_user($_POST, $userId);
+        $user["extension"] = $extension;
+        update_user($user, $userId);
     }
 
+
+    // echo "<pre>";
+    // var_dump($user);
+    // echo "</pre>";
     header("Location: index.php");
 }
 ?>
