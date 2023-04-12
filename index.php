@@ -30,7 +30,7 @@ $users = get_users();
                     <td><?php echo $user['id']; ?></td>
                     <td>
                         <?php if (isset($user['extension'])) : ?>
-                            <img style="width: 60px;" src="<?php echo 'images/' . $user['id'] . '.' . $user['extension']; ?>" alt="">
+                            <img style="width: 60px;" src="<?php echo "images/{$user['id']}.{$user['extension']}"; ?>" alt="">
                         <?php endif; ?>
                     </td>
                     <td><?php echo $user['name']; ?></td>
