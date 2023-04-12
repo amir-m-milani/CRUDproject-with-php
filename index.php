@@ -1,11 +1,16 @@
 <?php
-require "users.php";
+require "users/users.php";
 include "partials/header.php";
 $users = get_users();
 
 
 ?>
-<div class="container">
+<div class="container p-3">
+
+    <p>
+        <a class="btn btn-success" href="create.php">Create User</a>
+    </p>
+
     <table class="table">
         <thead>
             <tr>

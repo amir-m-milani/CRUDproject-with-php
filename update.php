@@ -1,5 +1,5 @@
 <?php
-require "users.php";
+require "users/users.php";
 include "partials/header.php";
 
 if (!isset($_GET['id'])) {
