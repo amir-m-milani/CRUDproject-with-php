@@ -19,16 +19,12 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             mkdir(__DIR__ . "/images");
         }
         //get file extension
-        $fileType = explode("/", $_FILES['picture']['type']);
-        $extension = $fileType[1];
+        $extension = explode("/", $_FILES['picture']['type'])[1];
         move_uploaded_file($_FILES['picture']['tmp_name'], __DIR__ . "/images/$userId.$extension");
         update_user($_POST, $userId);
     }
 
     header("Location: index.php");
-    // echo "<pre>";
-    // var_dump($fileType);
-    // echo "</pre>";
 }
 ?>
 
