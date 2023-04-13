@@ -27,9 +27,6 @@ function creat_user($data)
     if (!empty($_FILES["picture"]["name"])) {
         uploadImage($_FILES, $user);
     }
-
-
-    header("Location: index.php");
 }
 
 function update_user($data, $id)
