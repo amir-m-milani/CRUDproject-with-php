@@ -25,3 +25,4 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 }
 
 include "_form.php";
+include "partials/footer.php";
