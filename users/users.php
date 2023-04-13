@@ -18,6 +18,18 @@ function get_users_byId($id)
 
 function creat_user($data)
 {
+    $users = get_users();
+    $user['id'] = rand(1000, 2000);
+    $user = array_merge($user, $data);
+    array_push($users, $user);
+    file_put_contents(__DIR__ . "/users.json", json_encode($users, JSON_PRETTY_PRINT));
+
+    if (!empty($_FILES["picture"]["name"])) {
+        uploadImage($_FILES, $user);
+    }
+
+
+    header("Location: index.php");
 }
 
 function update_user($data, $id)
