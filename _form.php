@@ -1,10 +1,10 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-            <h3><?php if (isset($user['id'])) : ?>
+            <h3><?php if (!empty($user['id'])) : ?>
                     Update user :<b><?php echo $user['name'] ?></b>
                 <?php else : ?>
-                    Creat User
+                    Create User
                 <?php endif; ?>
             </h3>
         </div>
