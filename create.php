@@ -13,7 +13,7 @@ $user = [
 include "_form.php";
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
     creat_user($_POST);
+    header("Location: index.php");
 }
-header("Location: index.php");
 
 include "partials/footer.php";
