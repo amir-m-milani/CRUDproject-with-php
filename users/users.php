@@ -22,7 +22,7 @@ function creat_user($data)
     $user['id'] = rand(1000, 2000);
     $user = array_merge($user, $data);
     array_push($users, $user);
-    file_put_contents(__DIR__ . "/users.json", json_encode($users, JSON_PRETTY_PRINT));
+    putJson($users);
 
     if (!empty($_FILES["picture"]["name"])) {
         uploadImage($_FILES, $user);
@@ -39,12 +39,23 @@ function update_user($data, $id)
         }
     }
 
-    file_put_contents(__DIR__ . "/users.json", json_encode($users, JSON_PRETTY_PRINT));
+    putJson($users);
     return $theUser;
 }
 
 function delete_user($id)
 {
+    $users = get_users();
+    foreach ($users as $i => $user) {
+        if ($id == $user['id']) {
+            unset($users[$i]);
+        }
+    }
+
+    putJson($users);
+    // echo "<pre>";
+    // var_dump($users);
+    // echo "</pre>";
 }
 
 
@@ -58,4 +69,10 @@ function uploadImage($file, $user)
     move_uploaded_file($file['picture']['tmp_name'], dirname(__DIR__) . "/images/{$user['id']}.$extension");
     $user["extension"] = $extension;
     update_user($user, $user['id']);
+}
+
+
+function putJson($users)
+{
+    file_put_contents(__DIR__ . "/users.json", json_encode($users, JSON_PRETTY_PRINT));
 }
